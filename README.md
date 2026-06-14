@@ -1,46 +1,46 @@
-# Do I Have Frame Shift?
+# Image Compare Tool
 
-A lightweight browser tool for comparing two images and spotting frame shift, focus shift, exposure changes, color shifts, or unintended background changes.
+A lightweight browser tool for comparing two images side by side, blinking between them, and highlighting visual differences.
 
 Live app: https://image-compare-tool-liart.vercel.app
 
-The app is designed for reviewers checking whether an edited image keeps the same scene, camera angle, framing, exposure, focus, and white balance while only adding intended people/objects and their natural shadows.
+Everything runs locally in the browser. Images are not uploaded to a server.
 
 ## Features
 
 - Local PNG/JPEG/WebP upload picker for selecting two images at once
-- Good and Bad example pairs for quick testing
-- Active source highlighting for Good example, Bad example, or custom uploads
+- Built-in Good and Bad example pairs for quick testing
+- Active source highlighting for examples or custom uploads
 - Side-by-side comparison with synced zoom and pan
-- Premiere-style display preview quality options: 25%, 50%, 75%, and Original
+- Display preview quality options: 25%, 50%, 75%, and Original
 - Blink mode with 250ms default speed, 500ms max speed control, and manual frame toggle
 - Canvas-based difference overlay with grayscale base and red highlights
-- Difference threshold defaults to 15%, with the reviewer slider locked to the useful 5-20% range
+- Difference threshold defaults to 15%, with the slider locked to the useful 5-20% range
 - Threshold and overlay opacity controls that redraw from cached analysis data
-- Instant hover notes on the review mode buttons
+- Instant hover notes on the comparison mode buttons
 - Dimension mismatch warning
 
 ## Privacy
 
-Images stay in the reviewer browser. The app has no backend and does not upload files to a server.
+Images stay in your browser. The app has no backend and does not upload files to a server.
 
-## How Reviewers Use It
+## How It Works
 
 - **Side by side** compares both images next to each other.
 - **Blink** flips between the two images so movement is easier to notice.
 - **Difference** highlights changed areas in red.
 
-In Difference mode, only added subjects/objects and their natural shadows should turn red. If fixed background details like walls, floors, furniture edges, door frames, or scene lines turn red, that usually means frame shift, focus shift, lighting change, or color shift.
+Difference mode is useful for spotting image alignment changes, lighting changes, focus changes, color shifts, compression artifacts, or objects that changed between two images.
 
-For difference review, 10-20% is the practical threshold range. Under 5% tends to show mostly noise and compression. The default is 15%.
+For difference checks, 10-20% is the practical threshold range. Under 5% tends to show mostly noise and compression. The default is 15%.
 
 ## Performance Notes
 
 The app starts with lightweight bundled WebP examples. The Good example pair is about 132 KB combined, and the Bad example pair is about 181 KB combined.
 
-Difference mode uses a bounded preview-resolution canvas for speed. This keeps 16 MB to 100 MB image files usable while still showing scene-wide shifts, focus changes, lighting changes, and added objects clearly.
+Difference mode uses a bounded preview-resolution canvas for speed. This keeps large image files usable while still showing broad visual changes clearly.
 
-The side-by-side and blink viewers can use capped display previews for very large images so zooming and panning stay responsive while preserving enough detail for review. Use Original when maximum sharpness matters more than speed.
+The side-by-side and blink viewers can use capped display previews for very large images so zooming and panning stay responsive. Use Original when maximum sharpness matters more than speed.
 
 ## Local Development
 
